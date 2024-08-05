@@ -3,21 +3,21 @@ package com.app.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Entity
 @Data
+@NoArgsConstructor
+@Entity
+@Table(name = "location")
 public class Location {
-    @Id
-    private String locationid;
 
+   
+    @Id
     @Column(nullable = false)
     private String city;
 
-    @Column(nullable = false)
     private String state;
-
-    @Column(nullable = false)
-    private String country;
 }

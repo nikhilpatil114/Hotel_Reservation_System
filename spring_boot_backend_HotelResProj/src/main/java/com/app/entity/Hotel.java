@@ -1,29 +1,27 @@
 package com.app.entity;
 
-import java.math.BigDecimal;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Entity
+import javax.persistence.*;
+
 @Data
+@NoArgsConstructor
+@Entity
+@Table(name = "hotel")
 public class Hotel {
     @Id
-    private String hotelid;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer hotelid;
 
     @Column(nullable = false)
-    private String name;
+    private String hotelname;
 
     @ManyToOne
-    @JoinColumn(name = "locationID")
+    @JoinColumn(name = "city", foreignKey = @ForeignKey(name = "fk_hotel_location"))
     private Location location;
-
-    @Column(precision = 2, scale = 1)
-    private BigDecimal rating;
+    
+    @OneToOne
+    @JoinColumn(name = "roomid", foreignKey = @ForeignKey(name = "fk_hotel_room"))
+    private Room room;
 }
-

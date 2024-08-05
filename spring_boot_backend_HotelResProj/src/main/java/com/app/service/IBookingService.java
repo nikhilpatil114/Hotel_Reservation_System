@@ -2,12 +2,19 @@ package com.app.service;
 
 import java.util.List;
 
-import com.app.dto.BookingDto;
-import com.app.entity.Booking;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public interface IBookingService {
-	//List<Booking> getbooking();
-	
-	BookingDto bookingDetails(Long id);
-	 List<Booking> getBooking();
+import com.app.entity.Booking;
+import com.app.repository.BookingRepository;
+@Service
+public class IBookingService implements BookingService {
+    @Autowired
+    BookingRepository bookingRepository;
+	@Override
+	public List<Booking> getBooking() {
+		
+		return bookingRepository.findAll();
+	}
+
 }

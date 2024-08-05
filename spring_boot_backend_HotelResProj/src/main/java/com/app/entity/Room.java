@@ -1,32 +1,28 @@
 package com.app.entity;
 
-import java.math.BigDecimal;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Entity
+import javax.persistence.*;
+
 @Data
+@NoArgsConstructor
+@Entity
+@Table(name = "room")
 public class Room {
     @Id
-    private String roomid;
-
-    @ManyToOne
-    @JoinColumn(name = "hotelid")
-    private Hotel hotel;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long roomid;
+     private String roomtype;
 
     @Column(nullable = false)
-    private String roomType;
+    private Double pricepernight;
 
-    @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal price;
-
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Boolean availability;
+    private AvailabilityStatus availabilitystatus;
+
+    public enum AvailabilityStatus {
+        AVAILABLE, BOOKED, MAINTENANCE
+    }
 }
-

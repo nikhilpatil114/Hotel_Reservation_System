@@ -1,45 +1,43 @@
 package com.app.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.Data;
 
+import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
 @Entity
 @Data
+@Table(name="user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userid;
+    private Integer userid;
 
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false)
     private String username;
 
     @Column(nullable = false)
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Role role;
-
-    @Column(nullable = false)
-    private String name;
-
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false)
     private String email;
 
-    @Column(nullable = false)
     private String phone;
-
-    @Column
     private String address;
 
-    public enum Role {
-        Admin, Customer
-    }
+    
+    private String role;
+
+   
+
+    // Getters and Setters
 }
