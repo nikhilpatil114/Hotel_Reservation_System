@@ -38,6 +38,7 @@ function App() {
         <Route path="/hotel" element={<HotelDetails />} />
         <Route path="/addhotel" element={<AdminAddHotel/>} />
         <Route path="/payment" element={<PaymentPage />} />
+        <Route path="/logout" element={<HomePage />} />
         <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <Footer />

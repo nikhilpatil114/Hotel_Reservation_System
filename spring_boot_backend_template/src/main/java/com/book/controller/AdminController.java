@@ -63,11 +63,14 @@ package com.book.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -136,6 +139,24 @@ public class AdminController {
         Hotels savedHotel = hotelsService.saveHotel(hotel);
 
         return ResponseEntity.ok(savedHotel);
+    }
+    @DeleteMapping("/delhotel/{id}")
+    public ResponseEntity<String> deleteHotel(@PathVariable Long id) {
+        try {
+            hotelsService.deleteHotelById(id);
+            return ResponseEntity.ok("Hotel deleted successfully");
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    @PutMapping("/updhotel/{id}")
+    public ResponseEntity<Hotels> updateHotel(@PathVariable("id") Long id, @RequestBody Hotels updatedHotel) {
+        try {
+            Hotels updated = hotelsService.updateHotel(id, updatedHotel);
+            return new ResponseEntity<>(updated, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 }
 

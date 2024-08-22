@@ -6,8 +6,8 @@ function AboutUs() {
       <h2 className="text-4xl font-serif font-bold text-yellow-500 mb-6 text-center">
         About Us
       </h2>
-      <p className="text-lg text-gray-200 text-center max-w-2xl mx-auto">
-        At BookMyStay, we offer unparalleled hospitality and the best deals on hotel rooms. Whether you're traveling for business or leisure, our platform helps you find the perfect stay.
+      <p className="text-lg text-blue-500 text-center max-w-2xl mx-auto">
+        At YourPlace, we offer unparalleled hospitality and the best deals on hotel rooms. Whether you're traveling for business or leisure, our platform helps you find the perfect stay.
       </p>
     </div>
   );

@@ -114,7 +114,7 @@ function NavBar() {
           className={`lg:flex lg:space-x-8 lg:static lg:bg-transparent lg:p-0 fixed top-0 right-0 w-full lg:w-auto bg-gray-800 transition-transform duration-300 ${isOpen ? "translate-x-0" : "translate-x-full"
             } lg:translate-x-0`}
         >
-          {["login", "Register", "About-Us"].map(
+          {["login", "Register", "About-Us","Logout"].map(
             (section, index) => (
               <li key={index} className="p-4 lg:p-0">
                 <Link
